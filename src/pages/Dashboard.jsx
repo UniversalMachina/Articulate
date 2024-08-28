@@ -1,9 +1,17 @@
 import React from 'react';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
+import Sidebar from './Sidebar';
 
 const Dashboard = () => {
   return (
+
+<div className='flex flex-row'> 
+
+<Sidebar/>
+
+
     <div className="p-6 bg-gray-200 min-h-screen">
+        
       <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -139,6 +147,7 @@ const Dashboard = () => {
           </table>
         </div>
       </div>
+    </div>
     </div>
   );
 };
