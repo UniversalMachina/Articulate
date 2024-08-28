@@ -59,11 +59,20 @@ const Dashboard = () => {
             </div>
             <div>
               <p className="font-bold text-2xl mb-2">$4.9400</p>
-              <table className="w-full text-sm">
+              <table className="w-full text-sm table-auto border border-gray-200">
                 <tbody>
-                  <tr><td>Last 24 Hours:</td><td>$0.00</td></tr>
-                  <tr><td>Last 7 Days:</td><td>$0.06</td></tr>
-                  <tr><td>Last 30 Days:</td><td>$2.06</td></tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Last 24 Hours:</td>
+                    <td className="p-2">$0.00</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Last 7 Days:</td>
+                    <td className="p-2">$0.06</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Last 30 Days:</td>
+                    <td className="p-2">$2.06</td>
+                  </tr>
                 </tbody>
               </table>
               <button className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
@@ -79,15 +88,36 @@ const Dashboard = () => {
             </div>
             <div>
               <p className="font-bold mb-2">Available Characters: 8.86k</p>
-              <table className="w-full text-sm">
+              <table className="w-full text-sm table-auto border border-gray-200">
                 <tbody>
-                  <tr><td>Used Characters:</td><td>1.14k</td></tr>
-                  <tr><td>Allocated to Sub-Accounts:</td><td>0</td></tr>
-                  <tr><td>Used by AI Agents:</td><td>1.14k</td></tr>
-                  <tr><td>Total Characters:</td><td>10.00k</td></tr>
-                  <tr><td>Characters from package:</td><td>10.00k</td></tr>
-                  <tr><td>Additional Characters:</td><td>0</td></tr>
-                  <tr><td>Bonus Characters:</td><td>10.00k</td></tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Used Characters:</td>
+                    <td className="p-2">1.14k</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Allocated to Sub-Accounts:</td>
+                    <td className="p-2">0</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Used by AI Agents:</td>
+                    <td className="p-2">1.14k</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Total Characters:</td>
+                    <td className="p-2">10.00k</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Characters from package:</td>
+                    <td className="p-2">10.00k</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Additional Characters:</td>
+                    <td className="p-2">0</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Bonus Characters:</td>
+                    <td className="p-2">10.00k</td>
+                  </tr>
                 </tbody>
               </table>
               <button className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
@@ -102,14 +132,32 @@ const Dashboard = () => {
               <AiOutlineInfoCircle className="h-5 w-5 text-gray-500" />
             </div>
             <div>
-              <table className="w-full text-sm">
+              <table className="w-full text-sm table-auto border border-gray-200">
                 <tbody>
-                  <tr><td>Available AI Agents:</td><td>4</td></tr>
-                  <tr><td>Used AI Agents:</td><td>0</td></tr>
-                  <tr><td>Allocated to Sub-Accounts:</td><td>0</td></tr>
-                  <tr><td>Active AI Agents:</td><td>0</td></tr>
-                  <tr><td>Total AI Agents:</td><td>5 (4 + 1)</td></tr>
-                  <tr><td>AI Agents from package:</td><td>4</td></tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Available AI Agents:</td>
+                    <td className="p-2">4</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Used AI Agents:</td>
+                    <td className="p-2">0</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Allocated to Sub-Accounts:</td>
+                    <td className="p-2">0</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Active AI Agents:</td>
+                    <td className="p-2">0</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">Total AI Agents:</td>
+                    <td className="p-2">5 (4 + 1)</td>
+                  </tr>
+                  <tr className="border-t">
+                    <td className="p-2 border-r border-gray-200">AI Agents from package:</td>
+                    <td className="p-2">4</td>
+                  </tr>
                 </tbody>
               </table>
               <button className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
@@ -124,17 +172,17 @@ const Dashboard = () => {
             <h2 className="text-lg font-semibold">Sub-Accounts</h2>
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="w-full text-sm table-auto border border-gray-200">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left p-2">Sub-Account Name</th>
-                  <th className="text-left p-2">Admin Email</th>
-                  <th className="text-left p-2">Creation Date</th>
-                  <th className="text-left p-2">Allocated AI Agents</th>
-                  <th className="text-left p-2">Used AI Agents</th>
-                  <th className="text-left p-2">Allocated Wallet Balance</th>
-                  <th className="text-left p-2">Used Wallet Balance</th>
-                  <th className="text-left p-2">Total Characters</th>
+                  <th className="text-left p-2 border-r border-gray-200">Sub-Account Name</th>
+                  <th className="text-left p-2 border-r border-gray-200">Admin Email</th>
+                  <th className="text-left p-2 border-r border-gray-200">Creation Date</th>
+                  <th className="text-left p-2 border-r border-gray-200">Allocated AI Agents</th>
+                  <th className="text-left p-2 border-r border-gray-200">Used AI Agents</th>
+                  <th className="text-left p-2 border-r border-gray-200">Allocated Wallet Balance</th>
+                  <th className="text-left p-2 border-r border-gray-200">Used Wallet Balance</th>
+                  <th className="text-left p-2 border-r border-gray-200">Total Characters</th>
                   <th className="text-left p-2">Used Characters</th>
                 </tr>
               </thead>
