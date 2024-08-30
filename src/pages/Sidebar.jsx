@@ -3,76 +3,47 @@ import { AiOutlineDashboard, AiOutlineUser, AiOutlineSetting, AiOutlineQuestionC
 import { BsChatSquareDots, BsPersonCircle } from 'react-icons/bs';
 import { FiUsers, FiPackage } from 'react-icons/fi';
 
+const SidebarLink = ({ icon: Icon, text, subLinks = [] }) => (
+  <div className="mt-4">
+    <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200">
+      <Icon className="w-5 h-5" />
+      <span>{text}</span>
+    </a>
+    {subLinks.length > 0 && (
+      <div className="ml-8 mt-2 space-y-2">
+        {subLinks.map((subLink, index) => (
+          <a key={index} href="#" className="block text-gray-600 hover:text-blue-600 transition-colors duration-200">
+            {subLink}
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+);
+
 const Sidebar = () => {
   return (
-    <div className="w-64 bg-white shadow-md h-screen p-4">
+    <div className="fixed left-0 top-0 w-64 h-screen bg-white shadow-md p-4 overflow-y-auto">
       <div className="mb-4">
         <h2 className="text-lg font-bold">Stammer.ai</h2>
-        <p className="mt-2 text-sm bg-green-100 text-green-700 px-2 py-1 rounded-md">Agency Owner</p>
+        <p className="mt-2 text-sm bg-green-100 text-green-700 px-2 py-1 rounded-md inline-block">Agency Owner</p>
       </div>
 
       <nav className="space-y-2">
         <div className="text-sm font-medium text-gray-600">Switch to Sub-Account</div>
 
-        <div className="mt-4">
-          <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-            <AiOutlineDashboard className="w-5 h-5" />
-            <span>Dashboard</span>
-          </a>
-        </div>
-
-        <div className="mt-4">
-          <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-            <BsChatSquareDots className="w-5 h-5" />
-            <span>AI Agents (Chatbots)</span>
-          </a>
-          <div className="ml-8 mt-2">
-            <a href="#" className="block text-gray-600 hover:text-blue-600">My AI Agents</a>
-            <a href="#" className="block text-gray-600 hover:text-blue-600">Create a new AI Agent</a>
-          </div>
-        </div>
-
-        <div className="mt-4">
-          <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-            <AiOutlineUser className="w-5 h-5" />
-            <span>Account</span>
-          </a>
-        </div>
-
-        <div className="mt-4">
-          <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-            <FiUsers className="w-5 h-5" />
-            <span>Agency</span>
-          </a>
-        </div>
-
-        <div className="mt-4">
-          <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-            <BsPersonCircle className="w-5 h-5" />
-            <span>Sub-Accounts</span>
-          </a>
-        </div>
-
-        <div className="mt-4">
-          <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-            <FiPackage className="w-5 h-5" />
-            <span>White Label API</span>
-          </a>
-        </div>
-
-        <div className="mt-4">
-          <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-            <AiOutlineSetting className="w-5 h-5" />
-            <span>Marketplace</span>
-          </a>
-        </div>
-
-        <div className="mt-4">
-          <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-            <AiOutlineQuestionCircle className="w-5 h-5" />
-            <span>Need Help?</span>
-          </a>
-        </div>
+        <SidebarLink icon={AiOutlineDashboard} text="Dashboard" />
+        <SidebarLink 
+          icon={BsChatSquareDots} 
+          text="AI Agents (Chatbots)" 
+          subLinks={["My AI Agents", "Create a new AI Agent"]}
+        />
+        <SidebarLink icon={AiOutlineUser} text="Account" />
+        <SidebarLink icon={FiUsers} text="Agency" />
+        <SidebarLink icon={BsPersonCircle} text="Sub-Accounts" />
+        <SidebarLink icon={FiPackage} text="White Label API" />
+        <SidebarLink icon={AiOutlineSetting} text="Marketplace" />
+        <SidebarLink icon={AiOutlineQuestionCircle} text="Need Help?" />
       </nav>
     </div>
   );

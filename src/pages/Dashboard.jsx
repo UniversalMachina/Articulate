@@ -2,199 +2,164 @@ import React from 'react';
 import { AiOutlineInfoCircle, AiOutlineRocket, AiOutlineBook, AiOutlineProject } from 'react-icons/ai';
 import Sidebar from './Sidebar';
 
+const Card = ({ icon: Icon, title, description, buttonText }) => (
+  <div className="bg-white p-6 rounded-lg shadow">
+    <div className="flex items-center justify-center mb-4">
+      <Icon className="h-8 w-8 text-gray-500 mr-2" />
+      <h2 className="text-xl font-semibold text-gray-600">{title}</h2>
+    </div>
+    <div className="text-center">
+      <p className="text-sm mb-4">{description}</p>
+      <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
+        {buttonText}
+      </button>
+    </div>
+  </div>
+);
+
+const InfoCard = ({ title, children }) => (
+  <div className="bg-white p-6 rounded-lg shadow">
+    <div className="flex justify-between items-center mb-4">
+      <h2 className="text-xl font-semibold text-gray-600">{title}</h2>
+      <AiOutlineInfoCircle className="h-6 w-6 text-gray-500" />
+    </div>
+    <div className="text-center">
+      {children}
+    </div>
+  </div>
+);
+
+const Table = ({ headers, data }) => (
+  <table className="w-full text-sm table-auto border border-gray-200">
+    {headers && (
+      <thead>
+        <tr className="border-b">
+          {headers.map((header, index) => (
+            <th key={index} className="text-left p-2 border-r border-gray-200 last:border-r-0">
+              {header}
+            </th>
+          ))}
+        </tr>
+      </thead>
+    )}
+    <tbody>
+      {data.map((row, rowIndex) => (
+        <tr key={rowIndex} className="border-t">
+          {row.map((cell, cellIndex) => (
+            <td key={cellIndex} className="p-2 border-r border-gray-200 last:border-r-0">
+              {cell}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+);
+
 const Dashboard = () => {
+  const quickStartCards = [
+    {
+      icon: AiOutlineRocket,
+      title: "Quick Start Guide",
+      description: "Learn to Customize Code Items to get started quickly and easily.",
+      buttonText: "Quick Start Guide"
+    },
+    {
+      icon: AiOutlineBook,
+      title: "Documentation",
+      description: "Explore our comprehensive documentation to make the most use of OpenAI.",
+      buttonText: "Documentation"
+    },
+    {
+      icon: AiOutlineProject,
+      title: "Product Roadmap",
+      description: "Curious about our future plans? Check our product roadmap for exciting updates!",
+      buttonText: "Product Roadmap"
+    }
+  ];
+
+  const walletUsageData = [
+    ["Last 24 Hours:", "$0.00"],
+    ["Last 7 Days:", "$0.06"],
+    ["Last 30 Days:", "$2.06"]
+  ];
+
+  const storageData = [
+    ["Used Characters:", "1.14k"],
+    ["Allocated to Sub-Accounts:", "0"],
+    ["Used by AI Agents:", "1.14k"],
+    ["Total Characters:", "10.00k"],
+    ["Characters from package:", "10.00k"],
+    ["Additional Characters:", "0"],
+    ["Bonus Characters:", "10.00k"]
+  ];
+
+  const aiAgentsData = [
+    ["Available AI Agents:", "4"],
+    ["Used AI Agents:", "0"],
+    ["Allocated to Sub-Accounts:", "0"],
+    ["Active AI Agents:", "0"],
+    ["Total AI Agents:", "5 (4 + 1)"],
+    ["AI Agents from package:", "4"]
+  ];
+
+  const subAccountHeaders = [
+    "Sub-Account Name", "Admin Email", "Creation Date", "Allocated AI Agents",
+    "Used AI Agents", "Allocated Wallet Balance", "Used Wallet Balance",
+    "Total Characters", "Used Characters"
+  ];
+
   return (
-    <div className='flex flex-row'>
+    <div className="flex">
+
       <Sidebar />
+      <main className="flex-1 ml-64">
 
-      <div className="p-6 bg-gray-200 min-h-screen">
-        <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <div className="bg-white p-4 rounded-lg shadow">
-            <div className="flex items-center mb-2">
-              <AiOutlineRocket className="h-5 w-5 text-blue-600 mr-2" />
-              <h2 className="text-lg font-semibold">Quick Start Guide</h2>
-            </div>
-            <div>
-              <p className="text-sm mb-2">Learn to Customize Code Items to get started quickly and easily.</p>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                Quick Start Guide
-              </button>
-            </div>
-          </div>
-
-          <div className="bg-white p-4 rounded-lg shadow">
-            <div className="flex items-center mb-2">
-              <AiOutlineBook className="h-5 w-5 text-blue-600 mr-2" />
-              <h2 className="text-lg font-semibold">Documentation</h2>
-            </div>
-            <div>
-              <p className="text-sm mb-2">Explore our comprehensive documentation to make the most use of OpenAI.</p>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                Documentation
-              </button>
-            </div>
-          </div>
-
-          <div className="bg-white p-4 rounded-lg shadow">
-            <div className="flex items-center mb-2">
-              <AiOutlineProject className="h-5 w-5 text-blue-600 mr-2" />
-              <h2 className="text-lg font-semibold">Product Roadmap</h2>
-            </div>
-            <div>
-              <p className="text-sm mb-2">Curious about our future plans? Check our product roadmap for exciting updates!</p>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                Product Roadmap
-              </button>
-            </div>
-          </div>
+      <div className="flex-1 p-6 bg-gray-100 min-h-screen">
+        <div className="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 px-6 rounded-lg shadow-lg mb-8">
+          <h1 className="text-4xl font-bold text-center">Dashboard</h1>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <div className="bg-white p-4 rounded-lg shadow">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="text-lg font-semibold">Wallet Usage</h2>
-              <AiOutlineInfoCircle className="h-5 w-5 text-gray-500" />
-            </div>
-            <div>
-              <p className="font-bold text-2xl mb-2">$4.9400</p>
-              <table className="w-full text-sm table-auto border border-gray-200">
-                <tbody>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Last 24 Hours:</td>
-                    <td className="p-2">$0.00</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Last 7 Days:</td>
-                    <td className="p-2">$0.06</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Last 30 Days:</td>
-                    <td className="p-2">$2.06</td>
-                  </tr>
-                </tbody>
-              </table>
-              <button className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                Add to Wallet Balance
-              </button>
-            </div>
-          </div>
-
-          <div className="bg-white p-4 rounded-lg shadow">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="text-lg font-semibold">Storage (Characters)</h2>
-              <AiOutlineInfoCircle className="h-5 w-5 text-gray-500" />
-            </div>
-            <div>
-              <p className="font-bold mb-2">Available Characters: 8.86k</p>
-              <table className="w-full text-sm table-auto border border-gray-200">
-                <tbody>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Used Characters:</td>
-                    <td className="p-2">1.14k</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Allocated to Sub-Accounts:</td>
-                    <td className="p-2">0</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Used by AI Agents:</td>
-                    <td className="p-2">1.14k</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Total Characters:</td>
-                    <td className="p-2">10.00k</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Characters from package:</td>
-                    <td className="p-2">10.00k</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Additional Characters:</td>
-                    <td className="p-2">0</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Bonus Characters:</td>
-                    <td className="p-2">10.00k</td>
-                  </tr>
-                </tbody>
-              </table>
-              <button className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                Get More Storage
-              </button>
-            </div>
-          </div>
-
-          <div className="bg-white p-4 rounded-lg shadow">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="text-lg font-semibold">AI Agents</h2>
-              <AiOutlineInfoCircle className="h-5 w-5 text-gray-500" />
-            </div>
-            <div>
-              <table className="w-full text-sm table-auto border border-gray-200">
-                <tbody>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Available AI Agents:</td>
-                    <td className="p-2">4</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Used AI Agents:</td>
-                    <td className="p-2">0</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Allocated to Sub-Accounts:</td>
-                    <td className="p-2">0</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Active AI Agents:</td>
-                    <td className="p-2">0</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">Total AI Agents:</td>
-                    <td className="p-2">5 (4 + 1)</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="p-2 border-r border-gray-200">AI Agents from package:</td>
-                    <td className="p-2">4</td>
-                  </tr>
-                </tbody>
-              </table>
-              <button className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                Add More AI Agents
-              </button>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {quickStartCards.map((card, index) => (
+            <Card key={index} {...card} />
+          ))}
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow">
-          <div className="mb-2">
-            <h2 className="text-lg font-semibold">Sub-Accounts</h2>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <InfoCard title="Wallet Usage">
+            <p className="font-bold text-3xl mb-6 text-blue-600">$4.9400</p>
+            <Table data={walletUsageData} />
+            <button className="w-full mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
+              Add to Wallet Balance
+            </button>
+          </InfoCard>
+
+          <InfoCard title="Storage (Characters)">
+            <p className="font-bold mb-6 text-xl">Available Characters: <span className="text-green-600">8.86k</span></p>
+            <Table data={storageData} />
+            <button className="w-full mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
+              Get More Storage
+            </button>
+          </InfoCard>
+
+          <InfoCard title="AI Agents">
+            <Table data={aiAgentsData} />
+            <button className="w-full mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
+              Add More AI Agents
+            </button>
+          </InfoCard>
+        </div>
+
+        <div className="bg-white p-6 rounded-lg shadow">
+          <h2 className="text-2xl font-semibold text-gray-600 mb-6">Sub-Accounts</h2>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm table-auto border border-gray-200">
-              <thead>
-                <tr className="border-b">
-                  <th className="text-left p-2 border-r border-gray-200">Sub-Account Name</th>
-                  <th className="text-left p-2 border-r border-gray-200">Admin Email</th>
-                  <th className="text-left p-2 border-r border-gray-200">Creation Date</th>
-                  <th className="text-left p-2 border-r border-gray-200">Allocated AI Agents</th>
-                  <th className="text-left p-2 border-r border-gray-200">Used AI Agents</th>
-                  <th className="text-left p-2 border-r border-gray-200">Allocated Wallet Balance</th>
-                  <th className="text-left p-2 border-r border-gray-200">Used Wallet Balance</th>
-                  <th className="text-left p-2 border-r border-gray-200">Total Characters</th>
-                  <th className="text-left p-2">Used Characters</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td colSpan="9" className="text-center py-4">No Sub-Accounts Found</td>
-                </tr>
-              </tbody>
-            </table>
+            <Table headers={subAccountHeaders} data={[["No Sub-Accounts Found"]]} />
           </div>
         </div>
       </div>
+      </main>
+
     </div>
   );
 };
