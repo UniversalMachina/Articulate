@@ -110,10 +110,8 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="flex">
 
-      <Sidebar />
-      <main className="flex-1 ml-64">
+      <main className="flex-1">
 
       <div className="flex-1 p-6 bg-gray-100 min-h-screen">
         <div className="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 px-6 rounded-lg shadow-lg mb-8">
@@ -160,7 +158,6 @@ const Dashboard = () => {
       </div>
       </main>
 
-    </div>
   );
 };
 
